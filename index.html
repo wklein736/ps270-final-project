@@ -1615,7 +1615,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Democrat            22.0
 2 Republican          10.6</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>homeless1</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State Party"</span>, <span class='st'>"Mean Homeless Per 10k"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>homeless1</span>, digits <span class='op'>=</span> <span class='fl'>3</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State Party"</span>, <span class='st'>"Mean Homeless Per 10k"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
 <thead>
@@ -1627,11 +1627,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Democrat</td>
-<td style="text-align: right;">22.03269</td>
+<td style="text-align: right;">22.033</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Republican</td>
-<td style="text-align: right;">10.64920</td>
+<td style="text-align: right;">10.649</td>
 </tr>
 </tbody>
 </table>
