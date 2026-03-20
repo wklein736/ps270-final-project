@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/20230919-DATA-SOURCES.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data/20230919-DATA-SOURCES.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1547,7 +1547,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="project-thoughts">Project thoughts</h2>
 <p>I am interested in exploring data related to elections and polling, policies in different states especially their before and effects (with an emphasis on policies addressing housing crises and homelessness), canvassing and social engineering (nudge theory). This may change or be expanded upon depending on how available certain data is and my interests later in the semester.</p>
 <h2 id="proposal">Proposal</h2>
-<p>Do homelessness rates across U.S. states increase with their cost of living? In this study, I plan to analyze the extent to which states cost-of-living indexes (COLI) affect their rates of homelessness. I hypothesize that if a state has a higher COLI, it will have a higher rate of homelessness per 10,000 people. In states with a higher cost of living, I suspect that the overall rate of homelessness will be higher. With higher cost-of-living indexes, basic necessities like food, housing, and utilities require a greater share of a person’s finances. With this, it is only reasonable to assume that there would be more particular strain on low-income and vulnerable individuals, making it easier to fall into and harder to escape cycles of homelessness. My sample is comprised of data on homelessness and unemployment rates, cost-of-living indexes, along with the factors used to calculate it, and more, across all 50 states and the District of Columbia. My unit of analysis is State (e.g., Hawaii). The explanatory variable of interest is the cost-of-living index (COLI). That is how much a state is above or below the national average of cost of living, with a value of 100 being the national average. Any value over 100 is above the national average and any value below is lower than the national average. My outcome variable is homelessness, with it being the amount of homeless per 10k in a state. For example, Alabama has a homelessness value of 7.39, which means it has an average of 7.39 people experiencing homelessness per 10k. These variables are taken from Thomas F. Heston’s data set on the cost-of-living and homelessness. If I observe a positive relationship between rates of homelessness and cost-of-living indexes in states, this would suggest my hypothesis to be true. As in, homelessness rates increasing with higher cost-of-living indexes and decreasing with lower. On the other hand, if I observe a negative relationship, such as higher rates of homelessness in states with lower cost-of-living indexes, this would prove my hypothesis to be false. When running my regression analysis on this, a positive and significant coefficient would suggest support for my hypothesis.</p>
+<p>Do homelessness rates across U.S. states increase with cost of living? In this study, I plan to analyze the extent to which states cost-of-living indexes (COLI) affect their rates of homelessness. I hypothesize that if a state has a higher COLI, it will have a higher rate of homelessness per 10,000 people. In states with a higher cost of living, I suspect that the overall rate of homelessness will be higher. With higher cost-of-living indexes, basic necessities like food, housing, and utilities require a greater share of a person’s finances. With this, it is only reasonable to assume that there would be more particular strain on low-income and vulnerable individuals, making it easier to fall into and harder to escape cycles of homelessness. My sample is comprised of data on homelessness and unemployment rates, cost-of-living indexes, along with the factors used to calculate it, and more, across all 50 states and the District of Columbia. My unit of analysis is State (e.g., Hawaii). The explanatory variable of interest is the cost-of-living index (COLI). That is how much a state is above or below the national average of cost of living, with a value of 100 being the national average. Any value over 100 is above the national average and any value below is lower than the national average. My outcome variable is homelessness, with it being the amount of homeless per 10k in a state. For example, Alabama has a homelessness value of 7.39, which means it has an average of 7.39 people experiencing homelessness per 10k. These variables are taken from Thomas F. Heston’s data set on the cost-of-living and homelessness. If I observe a positive relationship between rates of homelessness and cost-of-living indexes in states, this would suggest my hypothesis to be true. As in, homelessness rates increasing with higher cost-of-living indexes and decreasing with lower. On the other hand, if I observe a negative relationship, such as higher rates of homelessness in states with lower cost-of-living indexes, this would prove my hypothesis to be false. When running my regression analysis on this, a positive and significant coefficient would suggest support for my hypothesis.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
@@ -1556,8 +1556,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>Homeless</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span><span class='st'>"data/20230919-DATA-SOURCES.xlsx"</span><span class='op'>)</span></span>
-<span><span class='va'>Homeless</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>homeless</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span><span class='st'>"data/20230919-DATA-SOURCES.xlsx"</span><span class='op'>)</span></span>
+<span><span class='va'>homeless</span></span></code></pre>
 </div>
 <pre><code># A tibble: 51 × 27
    STATE     HOMELESSNESS UNEMPLOYMENT  COLI GROCERY HOUSING UTILITIES
@@ -1582,7 +1582,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>Homeless</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>homeless</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code># A tibble: 6 × 27
   STATE      HOMELESSNESS UNEMPLOYMENT  COLI GROCERY HOUSING UTILITIES
@@ -1600,7 +1600,68 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   SMOKERS &lt;dbl&gt;, HSGRAD &lt;dbl&gt;, CIGEXCISE &lt;dbl&gt;, ALCOHOL &lt;dbl&gt;,
 #   PARTY &lt;dbl&gt;, POP &lt;dbl&gt;, SANCTUARY &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="data-visualization">Data Visualization</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>homeless1</span> <span class='op'>&lt;-</span> <span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>PARTY <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>PARTY</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Republican"</span>, <span class='st'>"Democrat"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PARTY</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean_homeless <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>HOMELESSNESS</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>homeless1</span></span></code></pre>
+</div>
+<pre><code># A tibble: 2 × 2
+  PARTY      mean_homeless
+  &lt;chr&gt;              &lt;dbl&gt;
+1 Democrat            22.0
+2 Republican          10.6</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>homeless1</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State Party"</span>, <span class='st'>"Mean Homeless Per 10k"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">State Party</th>
+<th style="text-align: right;">Mean Homeless Per 10k</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Democrat</td>
+<td style="text-align: right;">22.03269</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Republican</td>
+<td style="text-align: right;">10.64920</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>homeless1</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>PARTY</span>, y <span class='op'>=</span> <span class='va'>mean_homeless</span>, fill <span class='op'>=</span> <span class='va'>PARTY</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> </span>
+<span>                      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Democrat"</span> <span class='op'>=</span> <span class='st'>"steelblue1"</span>,</span>
+<span>                        <span class='st'>"Republican"</span> <span class='op'>=</span> <span class='st'>"indianred1"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"State Party"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Homeless Per 10k"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Mean of Homelessness for Democratic vs. Republican States"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" alt="" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>COLI</span>, y <span class='op'>=</span> <span class='va'>HOMELESSNESS</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, color <span class='op'>=</span> <span class='st'>"maroon"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Percent Cost of Living Index"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Amount Homeless Per 10k"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Amount of homeless vs. Percent Cost of Living in States"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" alt="" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

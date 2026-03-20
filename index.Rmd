@@ -45,7 +45,7 @@ homeless1 <- homeless |>
   summarize(mean_homeless = mean(HOMELESSNESS))
 homeless1
 
-knitr::kable(homeless1, col.names = c("State Party", "Mean Homeless Per 10k"))
+knitr::kable(homeless1, digits = 3, col.names = c("State Party", "Mean Homeless Per 10k"))
 ```
 
 ```{r}
