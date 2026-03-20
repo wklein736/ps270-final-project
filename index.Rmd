@@ -27,11 +27,22 @@ library(readxl)
 ```
 
 ```{r}
-Homeless <- read_xlsx("data/20230919-DATA-SOURCES.xlsx")
-Homeless
+homeless <- read_xlsx("data/20230919-DATA-SOURCES.xlsx")
+homeless
 ```
 
 ```{r}
-head(Homeless)
+head(homeless)
+```
+
+
+## Data Visualization
+
+
+
+```{r}
+ggplot(homeless, aes(x = HOMELESSNESS, y = COLI)) +
+  geom_point()+
+  geom_smooth(method = "lm")
 ```
 
