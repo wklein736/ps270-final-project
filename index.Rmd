@@ -24,6 +24,7 @@ Do homelessness rates across U.S. states increase with cost of living? In this s
 ```{r}
 library(tidyverse)
 library(readxl)
+library(ggplot2)
 ```
 
 ```{r}
