@@ -61,6 +61,8 @@ ggplot(homeless1, aes(x = PARTY, y = mean_homeless, fill = PARTY)) +
 ```
 
 
+## Attempt to answer research question
+
 
 ```{r}
 homeless |>
@@ -70,5 +72,12 @@ ggplot(aes(x = COLI, y = HOMELESSNESS)) +
   labs(x = "Percent Cost of Living Index", 
        y = "Amount Homeless Per 10k",
        title = "Amount of homeless vs. Percent Cost of Living in States")
+```
+
+
+This is a visualization that plots the amount of homeless per 10k in a state with its cost-of-living index (homeless per 10k in y axis [my dependent variable] and percent COLI in the x axis [my independent variable]) into a series of points. It then attempts to fit a linear regression line through these points. In the graph, it shows an increase (or upward trend/slope) in amount of homeless per 10k as the percent cost of living index goes up. This suggests that my hypothesis may be right, as it shows a positive relationship rather than a negative or absent relationship. This is corroborated in the table below. The first value presented is the predicted amount of homeless per 10k when COLI is at 0. The more interesting value is the 0.5045 under COLI, which is the predicted increase in homeless per 10k in a state for every percentage point increase in COLI. Since this is a positive value, it is showing a positive relationship between increase in COLI and amount of homeless, as indicated before in the graph. Additionally, since a value of 1 in amount of homeless in 10k is representative of 10k people, 0.5 is representative of an increase in 5000 people homeless which is a large amount and suggests a significant relationship between the two variables, furthering support for my hypothesis. It is worth noting that this analysis and visualization does not take into account possible confounder variables such as leading party in a state, which could affect COLI since democratic states could be ones that are more expensive to live in and they could have more homeless friendly policies which may increase the amount of homeless living there (homeless may move there or not want to leave there as much as red states) and vice versa.
+
+```{r}
+lm(HOMELESSNESS ~ COLI, data = homeless)
 ```
 
