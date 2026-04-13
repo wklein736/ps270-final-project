@@ -1650,6 +1650,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" alt="" width="624" /></p>
 </div>
+<h2 id="attempt-to-answer-research-question">Attempt to answer research question</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
@@ -1662,7 +1663,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" alt="" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>This is a visualization that plots the amount of homeless per 10k in a state with its cost-of-living index (homeless per 10k in y axis [my dependent variable] and percent COLI in the x axis [my independent variable]) into a series of points. It then attempts to fit a linear regression line through these points. In the graph, it shows an increase (or upward trend/slope) in amount of homeless per 10k as the percent cost of living index goes up. This suggests that my hypothesis may be right, as it shows a positive relationship rather than a negative or absent relationship. This is corroborated in the table below. The first value presented is the predicted amount of homeless per 10k when COLI is at 0. The more interesting value is the 0.5045 under COLI, which is the predicted increase in homeless per 10k in a state for every percentage point increase in COLI. Since this is a positive value, it is showing a positive relationship between increase in COLI and amount of homeless, as indicated before in the graph. Additionally, since a value of 1 in amount of homeless in 10k is representative of 10k people, 0.5 is representative of an increase in 5000 people homeless which is a large amount and suggests a significant relationship between the two variables, furthering support for my hypothesis. It is worth noting that this analysis and visualization does not take into account possible confounder variables such as leading party in a state, which could affect COLI since democratic states could be ones that are more expensive to live in and they could have more homeless friendly policies which may increase the amount of homeless living there (homeless may move there or not want to leave there as much as red states) and vice versa.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>HOMELESSNESS</span> <span class='op'>~</span> <span class='va'>COLI</span>, data <span class='op'>=</span> <span class='va'>homeless</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = HOMELESSNESS ~ COLI, data = homeless)
+
+Coefficients:
+(Intercept)         COLI  
+   -36.4553       0.5045  </code></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
