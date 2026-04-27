@@ -87,7 +87,7 @@ With higher rates of homelessness every year, and no clear end in sight, the U.S
 
 ## Data
 
-My data set is borrowed from Thomas F. Heston's article and study titled "The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis." 
+My data set is borrowed from Thomas F. Heston's study titled "The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis." 
 `Heston TF. The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis. Cureus. 2023;15(10):e46975. Published 2023 Oct 13. doi:10.7759/cureus.46975`
 The sample includes data on homelessness and unemployment rates, cost-of-living indexes, along with the factors used to calculate it, and more, across all 50 states and the District of Columbia. This data was collected in September 2023 and can be found below.
 `Thomas F. Heston MD. (2023). tomheston/Cost-of-Living-Index-as-a-Primary-Driver-of-Homelessness: Data and Python Code for Random Forest Model (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.8361394`
