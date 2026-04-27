@@ -97,7 +97,15 @@ My unit of analysis is State (e.g., Hawaii). The explanatory variable of interes
 All other data was taken from a variety of sources, which can found in the data package linked above.
 
 
-```{r}
+```{r, echo = F}
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+homeless <- read_xlsx("data/20230919-DATA-SOURCES.xlsx")
+homeless
+```
+
+```{r, echo = F}
 homeless2 <- homeless |>
   mutate(party_aff = if_else(PARTY == 1, "Republican", "Democrat"), 
   STATE = case_when(
@@ -156,12 +164,12 @@ homeless2 <- homeless |>
 homeless2
 ```
 
-```{r}
+```{r, echo = F}
 homeless_top25 <- homeless2 |>
   slice_max(HOMELESSNESS, n = 25)
 ```
 
-```{r}
+```{r, echo = F}
 ggplot(homeless_top25, aes(x = HOMELESSNESS, y = fct_reorder(STATE, HOMELESSNESS), fill = party_aff)) +
   geom_col() +
   scale_fill_manual(values = c("Republican" = "indianred1", "Democrat" = "steelblue1")) +
