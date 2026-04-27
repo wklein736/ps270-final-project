@@ -167,7 +167,7 @@ ggplot(homeless_top25, aes(x = HOMELESSNESS, y = fct_reorder(STATE, HOMELESSNESS
   scale_fill_manual(values = c("Republican" = "indianred1", "Democrat" = "steelblue1")) +
   labs(
     title = "Top 25 States With Largest Homelessness Population, 2022",
-    y = "State (w/ DC)",
+    y = "U.S. States (w/ DC)",
     x = "Amount of Homeless Per 10,000",
     fill = "Party",
     caption = "Data from Thomas F. Headson's 2023 Study on The Cost of Living Index as Primary Driver of Homelessness"
