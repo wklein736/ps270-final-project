@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/20230919-DATA-SOURCES.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data/20230919-DATA-SOURCES.xlsx","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-11-1.png","index_files/figure-html5/unnamed-chunk-12-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1675,6 +1675,134 @@ lm(formula = HOMELESSNESS ~ COLI, data = homeless)
 Coefficients:
 (Intercept)         COLI  
    -36.4553       0.5045  </code></pre>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>With higher rates of homelessness every year, and no clear end in sight, the U.S. is facing a homelessness epidemic of mass proportion. One could point at a number of causes such as stagnant wages, the COVID-19 pandemic, and mass wealth inequality. However, while the issue of homelessness is complex and multifaceted, I suspect that there is driver that stands above the rest in increasing rates of homelessness: a state’s Cost of Living Index (COLI). Using data derived from a 2023 study on homelessness, I plan to analyze the extent to which cost of living affects state rates of homelessness. I wish to answer the question: Do homelessness rates across U.S. states increase with their cost of living index? I hypothesize that if a state has a greater COLI, it will have a higher rate of homelessness per 10,000 people. In other words, in states with a higher cost of living, I suspect that the overall rate of homelessness will be greater. This topic is particularly important and interesting because it affects real people. With higher cost-of-living indexes, basic necessities like food, housing, and utilities require a greater share of a person’s finances. With this, it is only reasonable to assume that this would put more particular strain on low-income and vulnerable individuals, making it easier to fall into and harder to escape the homelessness cycle. By identifying a main cause or driver of homelessness rates, policy makers can then become more informed and redirect resources on the development and continuance of initiatives that tackle the primary driver.</p>
+<h2 id="data">Data</h2>
+<p>My data set is borrowed from Thomas F. Heston’s study titled “The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis.”</p>
+<p>Heston TF. The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis. Cureus. 2023;15(10):e46975. Published 2023 Oct 13. <a href="doi:10.7759/cureus.46975" class="uri">doi:10.7759/cureus.46975</a></p>
+<p>The sample includes data on homelessness and unemployment rates, cost-of-living indexes, along with the factors used to calculate it, and more, across all 50 states and the District of Columbia. This data was collected in September 2023 and can be found below.</p>
+<p>Thomas F. Heston MD. (2023). tomheston/Cost-of-Living-Index-as-a-Primary-Driver-of-Homelessness: Data and Python Code for Random Forest Model (v1.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.8361394" class="uri">https://doi.org/10.5281/zenodo.8361394</a></p>
+<p>My unit of analysis is State (e.g., Hawaii). The explanatory variable of interest is the cost-of-living index (COLI). That is how much a state is above or below the national average of cost of living, with a value of 100 being the national average. Any value over 100 is above the national average and any value below is lower than the national average. In the original study, the COLI data was taken from a 2022 Missouri Economic Research and Information Center Cost of Living Data Series report, in which it compiled publicly available data on all 50 states cost of living indexes and other information. The link to this report can be found below.</p>
+<p><a href="https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-states-state-by-state-analysis/" class="uri">https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-states-state-by-state-analysis/</a></p>
+<p>My outcome variable is homelessness or the amount of homeless per 10k in a state. For example, Alabama has a homelessness value of 7.39, which means it has an average of 7.39 people experiencing homelessness per 10k. This data was compiled from Luke Williams 2023 report “Homelessness in the United States: A State-by-State comparative Analysis,” in which he breaks down publicly available homelessness data presented in the 2022 Annual Homeless Assessment Report by the United States Department of Housing and Urban Development. The link to this article can be found below.</p>
+<p><a href="https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-states-state-by-state-analysis/" class="uri">https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-states-state-by-state-analysis/</a></p>
+<p>All other data was taken from a variety of sources, which can found in the data package linked above.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-11-1.png" alt="" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='va'>homeless</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span><span class='st'>"data/20230919-DATA-SOURCES.xlsx"</span><span class='op'>)</span></span>
+<span><span class='va'>homeless</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>homeless</span><span class='op'>)</span></span>
+<span><span class='va'>homeless1</span> <span class='op'>&lt;-</span> <span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>PARTY <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>PARTY</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Republican"</span>, <span class='st'>"Democrat"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PARTY</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean_homeless <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>HOMELESSNESS</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>homeless1</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>homeless1</span>, digits <span class='op'>=</span> <span class='fl'>3</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State Party"</span>, <span class='st'>"Mean Homeless Per 10k"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>homeless1</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>PARTY</span>, y <span class='op'>=</span> <span class='va'>mean_homeless</span>, fill <span class='op'>=</span> <span class='va'>PARTY</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> </span>
+<span>                      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Democrat"</span> <span class='op'>=</span> <span class='st'>"steelblue1"</span>,</span>
+<span>                        <span class='st'>"Republican"</span> <span class='op'>=</span> <span class='st'>"indianred1"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"State Party"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Homeless Per 10k"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Mean of Homelessness for Democratic vs. Republican States"</span><span class='op'>)</span></span>
+<span><span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>COLI</span>, y <span class='op'>=</span> <span class='va'>HOMELESSNESS</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, color <span class='op'>=</span> <span class='st'>"maroon"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Percent Cost of Living Index"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Amount Homeless Per 10k"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Amount of homeless vs. Percent Cost of Living in States"</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>HOMELESSNESS</span> <span class='op'>~</span> <span class='va'>COLI</span>, data <span class='op'>=</span> <span class='va'>homeless</span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='va'>homeless</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span><span class='st'>"data/20230919-DATA-SOURCES.xlsx"</span><span class='op'>)</span></span>
+<span><span class='va'>homeless2</span> <span class='op'>&lt;-</span> <span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>party_aff <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>PARTY</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Republican"</span>, <span class='st'>"Democrat"</span><span class='op'>)</span>, </span>
+<span>  STATE <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span></span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Alabama"</span> <span class='op'>~</span> <span class='st'>"AL"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Alaska"</span> <span class='op'>~</span> <span class='st'>"AK"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Arizona"</span> <span class='op'>~</span> <span class='st'>"AZ"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Arkansas"</span> <span class='op'>~</span> <span class='st'>"AR"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"California"</span> <span class='op'>~</span> <span class='st'>"CA"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Colorado"</span> <span class='op'>~</span> <span class='st'>"CO"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Connecticut"</span> <span class='op'>~</span> <span class='st'>"CT"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Delaware"</span> <span class='op'>~</span> <span class='st'>"DE"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Florida"</span> <span class='op'>~</span> <span class='st'>"FL"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Georgia"</span> <span class='op'>~</span> <span class='st'>"GA"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Hawaii"</span> <span class='op'>~</span> <span class='st'>"HI"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Idaho"</span> <span class='op'>~</span> <span class='st'>"ID"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Illinois"</span> <span class='op'>~</span> <span class='st'>"IL"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Indiana"</span> <span class='op'>~</span> <span class='st'>"IN"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Iowa"</span> <span class='op'>~</span> <span class='st'>"IA"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Kansas"</span> <span class='op'>~</span> <span class='st'>"KS"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Kentucky"</span> <span class='op'>~</span> <span class='st'>"KY"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Louisiana"</span> <span class='op'>~</span> <span class='st'>"LA"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Maine"</span> <span class='op'>~</span> <span class='st'>"ME"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Maryland"</span> <span class='op'>~</span> <span class='st'>"MD"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Massachusetts"</span> <span class='op'>~</span> <span class='st'>"MA"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Michigan"</span> <span class='op'>~</span> <span class='st'>"MI"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Minnesota"</span> <span class='op'>~</span> <span class='st'>"MN"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Mississippi"</span> <span class='op'>~</span> <span class='st'>"MS"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Missouri"</span> <span class='op'>~</span> <span class='st'>"MO"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Montana"</span> <span class='op'>~</span> <span class='st'>"MT"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Nebraska"</span> <span class='op'>~</span> <span class='st'>"NE"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Nevada"</span> <span class='op'>~</span> <span class='st'>"NV"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"New Hampshire"</span> <span class='op'>~</span> <span class='st'>"NH"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"New Jersey"</span> <span class='op'>~</span> <span class='st'>"NJ"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"New Mexico"</span> <span class='op'>~</span> <span class='st'>"NM"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"New York"</span> <span class='op'>~</span> <span class='st'>"NY"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"North Carolina"</span> <span class='op'>~</span> <span class='st'>"NC"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"North Dakota"</span> <span class='op'>~</span> <span class='st'>"ND"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Ohio"</span> <span class='op'>~</span> <span class='st'>"OH"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Oklahoma"</span> <span class='op'>~</span> <span class='st'>"OK"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Oregon"</span> <span class='op'>~</span> <span class='st'>"OR"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Pennsylvania"</span> <span class='op'>~</span> <span class='st'>"PA"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Rhode Island"</span> <span class='op'>~</span> <span class='st'>"RI"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"South Carolina"</span> <span class='op'>~</span> <span class='st'>"SC"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"South Dakota"</span> <span class='op'>~</span> <span class='st'>"SD"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Tennessee"</span> <span class='op'>~</span> <span class='st'>"TN"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Texas"</span> <span class='op'>~</span> <span class='st'>"TX"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Utah"</span> <span class='op'>~</span> <span class='st'>"UT"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Vermont"</span> <span class='op'>~</span> <span class='st'>"VT"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Virginia"</span> <span class='op'>~</span> <span class='st'>"VA"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Washington"</span> <span class='op'>~</span> <span class='st'>"WA"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"West Virginia"</span> <span class='op'>~</span> <span class='st'>"WV"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Wisconsin"</span> <span class='op'>~</span> <span class='st'>"WI"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Wyoming"</span> <span class='op'>~</span> <span class='st'>"WY"</span>,</span>
+<span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"District of Columbia"</span> <span class='op'>~</span> <span class='st'>"DC"</span></span>
+<span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>homeless_top25</span> <span class='op'>&lt;-</span> <span class='va'>homeless2</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice_max</a></span><span class='op'>(</span><span class='va'>HOMELESSNESS</span>, n <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span></span>
+<span><span class='va'>top25</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>homeless_top25</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>HOMELESSNESS</span>, y <span class='op'>=</span> <span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_reorder.html'>fct_reorder</a></span><span class='op'>(</span><span class='va'>STATE</span>, <span class='va'>HOMELESSNESS</span><span class='op'>)</span>, fill <span class='op'>=</span> <span class='va'>party_aff</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Republican"</span> <span class='op'>=</span> <span class='st'>"indianred1"</span>, <span class='st'>"Democrat"</span> <span class='op'>=</span> <span class='st'>"steelblue1"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Top 25 States By Homelessness Population, 2022"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"U.S. States (w/ DC)"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"Amount of Homeless Per 10,000"</span>,</span>
+<span>    fill <span class='op'>=</span> <span class='st'>"Party"</span></span>
+<span>  <span class='op'>)</span></span>
+<span><span class='va'>top25</span></span></code></pre>
+</div>
 </div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
