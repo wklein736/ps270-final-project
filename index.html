@@ -1677,9 +1677,9 @@ Coefficients:
    -36.4553       0.5045  </code></pre>
 </div>
 <h2 id="introduction">Introduction</h2>
-<p>With higher rates of homelessness every year, and no clear end in sight, the U.S. is facing a homelessness epidemic of mass proportion. One could point at a number of causes such as stagnant wages, the COVID-19 pandemic, and mass wealth inequality. However, while the issue of homelessness is complex and multifaceted, I suspect that there is driver that stands above the rest in increasing rates of homelessness: a state’s Cost of Living Index (COLI). Using data derived from a 2023 study on homelessness, I plan to analyze the extent to which cost of living affects state rates of homelessness. I wish to answer the question: Do homelessness rates across U.S. states increase with their cost of living index? I hypothesize that if a state has a greater COLI, it will have a higher rate of homelessness per 10,000 people. In other words, in states with a higher cost of living, I suspect that the overall rate of homelessness will be greater. This topic is particularly important and interesting because it affects real people. With higher cost-of-living indexes, basic necessities like food, housing, and utilities require a greater share of a person’s finances. With this, it is only reasonable to assume that this would put more particular strain on low-income and vulnerable individuals, making it easier to fall into and harder to escape the homelessness cycle. By identifying a main cause or driver of homelessness rates, policy makers can then become more informed and redirect resources on the development and continuance of initiatives that tackle the primary driver.</p>
+<p>With higher rates of homelessness every year, and no clear end in sight, the U.S. is facing a homelessness epidemic of mass proportion. One could point at a number of causes such as stagnant wages, the COVID-19 pandemic, and mass wealth inequality. However, while the issue of homelessness is complex and multifaceted, I suspect that there is a main correlation with increasing rates of homelessness: a state’s Cost of Living Index (COLI). Using data derived from a 2023 study on homelessness, I plan to analyze the extent to which cost of living correlates with state rates of homelessness. I wish to answer the question: Do homelessness rates across U.S. states increase with their cost of living index? I hypothesize that if a state has a greater COLI, it will have a higher rate of homelessness per 10,000 people. In other words, in states with a higher cost of living, I suspect that the overall rate of homelessness will be greater, indicating a positive relationship between the two variables. This topic is particularly important and interesting because it affects real people. With higher cost of living indexes, basic necessities like food, housing, and utilities require a greater share of a person’s finances. With this, it is only reasonable to assume that this would put more particular strain on low-income and vulnerable individuals, making it easier to fall into and harder to escape the homelessness cycle. By identifying a correlating relationship between homelessness rates and Cost of Living Index, policy makers can then make more informed choices and redirect resources on the development and continuance of initiatives that seek to lower these two variables.</p>
 <h2 id="data">Data</h2>
-<p>My data set is borrowed from Thomas F. Heston’s study titled “The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis.”</p>
+<p>My data set is borrowed from Thomas F. Heston’s study titled “The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis.” (Heston 2023)</p>
 <p>Heston TF. The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis. Cureus. 2023;15(10):e46975. Published 2023 Oct 13. <a href="doi:10.7759/cureus.46975" class="uri">doi:10.7759/cureus.46975</a></p>
 <p>The sample includes data on homelessness and unemployment rates, cost-of-living indexes, along with the factors used to calculate it, and more, across all 50 states and the District of Columbia. This data was collected in September 2023 and can be found below.</p>
 <p>Thomas F. Heston MD. (2023). tomheston/Cost-of-Living-Index-as-a-Primary-Driver-of-Homelessness: Data and Python Code for Random Forest Model (v1.0.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.8361394" class="uri">https://doi.org/10.5281/zenodo.8361394</a></p>
@@ -1687,7 +1687,8 @@ Coefficients:
 <p><a href="https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-states-state-by-state-analysis/" class="uri">https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-states-state-by-state-analysis/</a></p>
 <p>My outcome variable is homelessness or the amount of homeless per 10k in a state. For example, Alabama has a homelessness value of 7.39, which means it has an average of 7.39 people experiencing homelessness per 10k. This data was compiled from Luke Williams 2023 report “Homelessness in the United States: A State-by-State comparative Analysis,” in which he breaks down publicly available homelessness data presented in the 2022 Annual Homeless Assessment Report by the United States Department of Housing and Urban Development. The link to this article can be found below.</p>
 <p><a href="https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-states-state-by-state-analysis/" class="uri">https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-states-state-by-state-analysis/</a></p>
-<p>All other data was taken from a variety of sources, which can found in the data package linked above.</p>
+<p>All other data from this study was taken from a variety of sources, which can found in the data package linked above.</p>
+<p>The graph below is a summary of my main outcome variable, for your viewing pleasure.</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -1700,6 +1701,78 @@ Coefficients:
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-11-1.png" alt="" width="624" /></p>
 </div>
+<h2 id="results">Results</h2>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-12-1.png" alt="" width="624" /></p>
+</div>
+<p>This is a visualization that plots the amount of homeless per 10k in each of the states with its cost-of-living index (homeless per 10k in y axis [my dependent variable] and percent COLI in the x axis [my independent variable]) into a series of points. It then attempts to fit a linear regression line through these points. This is used to measure my main coefficient of interest, which is whether increased cost of living within states correlates with higher rates of homelessness. In the graph, it shows an increase (or upward trend/slope) in amount of homeless per 10k as the percent cost of living index goes up. This suggests that my hypothesis may be right, as it shows a positive relationship rather than a negative or absent relationship. This is corroborated in the table below. The first value presented is the predicted amount of homeless per 10k when COLI is at 0. The more interesting value is the 0.505 under COLI, which is the predicted increase in homeless per 10k in a state for every percentage point increase in COLI. Since this is a positive value, it is showing a positive relationship between increase in COLI and amount of homeless, which is corroborated above in the graph. Additionally, since a value of 1 in amount of homeless in 10k is representative of 10k people, 0.5 is representative of an increase in 5000 people homeless which is a substantially large amount. Taking this into account, along with the p value being close to zero, it indicates that there is a statistically significant relationship between cost of living within a state and its homelessness population. It is worth noting that this analysis and visualization cannot and should not be interpreted as causal. This is because we cannot have a randomized controlled study, as to do so would be extremely difficult and unethical. This visualization and analyis also does not take into account possible confounder variables such as leading party in a state, which could affect COLI. For example, democratic states could be ones that are more expensive to live in (i.e. more taxes, etc) and they could possibly have more homeless friendly policies which may increase the amount of homeless living there (homeless may move there or not want to leave there as much as red states) and vice versa. See the paragraph below this table for my analysis of this.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Change</th>
+<th style="text-align: right;">SD Error</th>
+<th style="text-align: right;">Stat</th>
+<th style="text-align: right;">P Val</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-36.455</td>
+<td style="text-align: right;">6.543</td>
+<td style="text-align: right;">-5.572</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">COLI</td>
+<td style="text-align: right;">0.505</td>
+<td style="text-align: right;">0.061</td>
+<td style="text-align: right;">8.223</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The table below represents a multiple regression using both cost of living and party in a state. Basically, we are analyzing how different factors like cost of living or party affiliation affect homelessness rates in states. The first value is homelessness when COLI and party is held at zero. This is impossible since you cannot have a COLI that is zero. The second, and what we are actually measuring, is COLI when party is held at a constant–when it is added as a factor. This means were comparing the cost of living index between states that are democrat or republican. We are doing this to measure if it is a confounder variable. In our original regression the change was 0.505 and when taking into account party it changes to 0.484. This is not a large change in amount of homeless per one percentage point increase of cost of living. Additionally, since we have such a large p value (0.605) for party, which way higher than the standard measure of 0.05, it shows that party is not a statistically significant variable. Both of these indicate that party is not a major confounder within our dataset. However,there are still possibilities of other major confounders such as a state’s population. For example, one could assume that states with higher populations may have more competetion for limited housing and resources driving up both the cost of living index and homelessness rate.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Change</th>
+<th style="text-align: right;">SD Error</th>
+<th style="text-align: right;">Stat</th>
+<th style="text-align: right;">P Val</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-33.635</td>
+<td style="text-align: right;">8.531</td>
+<td style="text-align: right;">-3.943</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">COLI</td>
+<td style="text-align: right;">0.484</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">6.655</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PARTY</td>
+<td style="text-align: right;">-1.469</td>
+<td style="text-align: right;">2.820</td>
+<td style="text-align: right;">-0.521</td>
+<td style="text-align: right;">0.605</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="conclusion">Conclusion</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
@@ -1734,8 +1807,10 @@ Coefficients:
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/tidymodels/infer'>infer</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span></span>
 <span><span class='va'>homeless</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span><span class='st'>"data/20230919-DATA-SOURCES.xlsx"</span><span class='op'>)</span></span>
-<span><span class='va'>homeless2</span> <span class='op'>&lt;-</span> <span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
+<span><span class='va'>homeless</span> <span class='op'>&lt;-</span> <span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>party_aff <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>PARTY</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Republican"</span>, <span class='st'>"Democrat"</span><span class='op'>)</span>, </span>
 <span>  STATE <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span></span>
 <span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Alabama"</span> <span class='op'>~</span> <span class='st'>"AL"</span>,</span>
@@ -1790,18 +1865,40 @@ Coefficients:
 <span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"Wyoming"</span> <span class='op'>~</span> <span class='st'>"WY"</span>,</span>
 <span>  <span class='va'>STATE</span> <span class='op'>==</span> <span class='st'>"District of Columbia"</span> <span class='op'>~</span> <span class='st'>"DC"</span></span>
 <span><span class='op'>)</span><span class='op'>)</span></span>
-<span><span class='va'>homeless_top25</span> <span class='op'>&lt;-</span> <span class='va'>homeless2</span> <span class='op'>|&gt;</span></span>
+<span><span class='va'>homeless_top25</span> <span class='op'>&lt;-</span> <span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice_max</a></span><span class='op'>(</span><span class='va'>HOMELESSNESS</span>, n <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span></span>
-<span><span class='va'>top25</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>homeless_top25</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>HOMELESSNESS</span>, y <span class='op'>=</span> <span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_reorder.html'>fct_reorder</a></span><span class='op'>(</span><span class='va'>STATE</span>, <span class='va'>HOMELESSNESS</span><span class='op'>)</span>, fill <span class='op'>=</span> <span class='va'>party_aff</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span><span class='va'>top25</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>homeless_top25</span>, </span>
+<span>                <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>HOMELESSNESS</span>,</span>
+<span>                    y <span class='op'>=</span> <span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_reorder.html'>fct_reorder</a></span><span class='op'>(</span><span class='va'>STATE</span>, <span class='va'>HOMELESSNESS</span><span class='op'>)</span>, </span>
+<span>                    fill <span class='op'>=</span> <span class='va'>party_aff</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Republican"</span> <span class='op'>=</span> <span class='st'>"indianred1"</span>, <span class='st'>"Democrat"</span> <span class='op'>=</span> <span class='st'>"steelblue1"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Republican"</span> <span class='op'>=</span> <span class='st'>"indianred1"</span>, </span>
+<span>                               <span class='st'>"Democrat"</span> <span class='op'>=</span> <span class='st'>"steelblue1"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
 <span>    title <span class='op'>=</span> <span class='st'>"Top 25 States By Homelessness Population, 2022"</span>,</span>
 <span>    y <span class='op'>=</span> <span class='st'>"U.S. States (w/ DC)"</span>,</span>
 <span>    x <span class='op'>=</span> <span class='st'>"Amount of Homeless Per 10,000"</span>,</span>
 <span>    fill <span class='op'>=</span> <span class='st'>"Party"</span></span>
 <span>  <span class='op'>)</span></span>
-<span><span class='va'>top25</span></span></code></pre>
+<span><span class='va'>top25</span></span>
+<span><span class='va'>homeless_lm_graph</span> <span class='op'>&lt;-</span> <span class='va'>homeless</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>COLI</span>, </span>
+<span>           y <span class='op'>=</span> <span class='va'>HOMELESSNESS</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, </span>
+<span>              color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Percent Cost of Living Index"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Amount Homeless Per 10k"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Amount of Homeless vs. Percent Cost of Living in States"</span><span class='op'>)</span></span>
+<span><span class='va'>homeless_lm_graph</span></span>
+<span><span class='va'>lm_homeless</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>HOMELESSNESS</span> <span class='op'>~</span> <span class='va'>COLI</span>, data <span class='op'>=</span> <span class='va'>homeless</span><span class='op'>)</span></span>
+<span><span class='va'>lm_homeless_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>lm_homeless</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Variable"</span>, <span class='st'>"Change"</span>, <span class='st'>"SD Error"</span>, <span class='st'>"Stat"</span>, <span class='st'>"P Val"</span><span class='op'>)</span>, digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span><span class='va'>lm_homeless_tab</span></span>
+<span><span class='va'>lmmult</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>HOMELESSNESS</span> <span class='op'>~</span> <span class='va'>COLI</span> <span class='op'>+</span> <span class='va'>PARTY</span>, data <span class='op'>=</span> <span class='va'>homeless</span><span class='op'>)</span></span>
+<span><span class='va'>lmmult_tab</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>lmmult</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Variable"</span>, <span class='st'>"Change"</span>, <span class='st'>"SD Error"</span>, <span class='st'>"Stat"</span>, <span class='st'>"P Val"</span><span class='op'>)</span>, digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span><span class='va'>lmmult_tab</span></span></code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

@@ -91,7 +91,7 @@ My data set is borrowed from Thomas F. Heston's study titled "The Cost of Living
 
 Heston TF. The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis. Cureus. 2023;15(10):e46975. Published 2023 Oct 13. doi:10.7759/cureus.46975
 
-The sample includes data on homelessness and unemployment rates, cost-of-living indexes, along with the factors used to calculate it, and more, across all 50 states and the District of Columbia. This data was collected in September 2023 and can be found below.
+The sample includes data on homelessness and unemployment rates, cost-of-living indexes, along with the factors used to calculate it, and more, across all 50 states and the District of Columbia. This data was collected in September 2023 and can be found below and is a cross-sectional analysis.
 
 Thomas F. Heston MD. (2023). tomheston/Cost-of-Living-Index-as-a-Primary-Driver-of-Homelessness: Data and Python Code for Random Forest Model (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.8361394
 
@@ -105,6 +105,8 @@ https://myelisting.com/commercial-real-estate-news/1444/homelessness-united-stat
 
 All other data from this study was taken from a variety of sources, which can found in the data package linked above.
 
+
+The graph below is a summary of my main outcome variable, for your viewing pleasure.
 
 ```{r, echo = F}
 library(tidyverse)
@@ -178,7 +180,7 @@ homeless <- homeless |>
 homeless_top25 <- homeless |>
   slice_max(HOMELESSNESS, n = 25)
 ```
-The graph below is a summary of my main outcome variable, for your viewing pleasure.
+
 ```{r, echo = F}
 top25 <- ggplot(homeless_top25, 
                 aes(x = HOMELESSNESS,
@@ -213,7 +215,7 @@ ggplot(aes(x = COLI,
 homeless_lm_graph
 ```
 
-This is a visualization that plots the amount of homeless per 10k in each of the states with its cost-of-living index (homeless per 10k in y axis [my dependent variable] and percent COLI in the x axis [my independent variable]) into a series of points. It then attempts to fit a linear regression line through these points. This is used to measure my main coefficient of interest, which is whether increased cost of living within states correlates with higher rates of homelessness. In the graph, it shows an increase (or upward trend/slope) in amount of homeless per 10k as the percent cost of living index goes up. This suggests that my hypothesis may be right, as it shows a positive relationship rather than a negative or absent relationship. This is corroborated in the table below. The first value presented is the predicted amount of homeless per 10k when COLI is at 0. The more interesting value is the 0.505 under COLI, which is the predicted increase in homeless per 10k in a state for every percentage point increase in COLI. Since this is a positive value, it is showing a positive relationship between increase in COLI and amount of homeless, which is corroborated above in the graph. Additionally, since a value of 1 in amount of homeless in 10k is representative of 10k people, 0.5 is representative of an increase in 5000 people homeless which is a substantially large amount. Taking this into account, along with the p value being close to zero, it indicates that there is a statistically significant relationship between cost of living within a state and its homelessness population. It is worth noting that this analysis and visualization cannot and should not be interpreted as causal. This is because we cannot have a randomized controlled study, as to do so would be extremely difficult and unethical. This visualization and analyis also does not take into account possible confounder variables such as leading party in a state, which could affect COLI. For example, democratic states could be ones that are more expensive to live in (i.e. more taxes, etc) and they could possibly have more homeless friendly policies which may increase the amount of homeless living there (homeless may move there or not want to leave there as much as red states) and vice versa. See the paragraph below this table for my analysis of this.
+This is a visualization that plots the amount of homeless per 10k in each of the states with its cost-of-living index (homeless per 10k in y axis [my dependent variable] and percent COLI in the x axis [my independent variable]) into a series of points. It then attempts to fit a linear regression line through these points. This is used to measure my main coefficient of interest, which is whether increased cost of living within states correlates with higher rates of homelessness. In the graph, it shows an increase (or upward trend/slope) in amount of homeless per 10k as the percent cost of living index goes up. This suggests that my hypothesis may be right, as it shows a positive relationship rather than a negative or absent relationship. This is corroborated in the table below. The first value presented is the predicted amount of homeless per 10k when COLI is at 0. The more interesting value is the 0.505 under COLI, which is the predicted increase in homeless per 10k in a state for every percentage point increase in COLI. Since this is a positive value, it is showing a positive relationship between increase in COLI and amount of homeless, which is corroborated above in the graph. Additionally, since a value of 1 in amount of homeless in 10k is representative of 10k people, 0.5 is representative of an increase in 5000 people homeless which is a substantially large amount. Taking this into account, along with the p value being close to zero, it indicates that there is a statistically significant relationship between cost of living within a state and its homelessness population. It is worth noting that this analysis and visualization cannot and should not be interpreted as causal. This is because we cannot have a randomized controlled trial, as to do so would be extremely difficult (or impossible) and unethical. This visualization and analyis also does not take into account possible confounder variables such as leading party in a state, which could affect COLI. For example, democratic states could be ones that are more expensive to live in (i.e. more taxes, etc) and they could possibly have more homeless friendly policies which may increase the amount of homeless living there (homeless may move there or not want to leave there as much as red states) and vice versa. See the paragraph below this table for my analysis of this.
 
 ```{r, echo = F}
 lm_homeless <- lm(HOMELESSNESS ~ COLI, data = homeless)
@@ -238,8 +240,9 @@ lmmult_tab
 
 ## Conclusion
 
+After analyizing both the linear regression table and graph, we are shown a positive correlating relathionship between Cost of Living Index and homelessness rates per 10,000 people in states. Additonally, since this is shown to be statistically significant through are p value and our additonal analysis of a possible confounder, there is strong support for my hypothesis. However, despite this, there are limitations to my analysis such as this only taking into account only one confounder variable, as there could a multitude such as population, and that it is only a cross sectional design (a snapshot of a point in time). Furthermore, one cannot feasibly or ethically do a randomized controlled study of cost of living index and homelessness, which, in the current scope of this analyis, makes it impossible to establish a causal relationship between the two variables. If I had more time, I would do a difference-in-differences analysis of this relationship over multiple years, not just 2022. However, I believe this is an interesting and informative snapshot look at how cost of living index and rates of homeless in states correlate with each other.
 
-
+## Code
 ```{r print-code, ref.label=knitr::all_labels(), echo = TRUE, eval=FALSE}
 
 ```
