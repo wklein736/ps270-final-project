@@ -83,11 +83,11 @@ lm(HOMELESSNESS ~ COLI, data = homeless)
 
 ## Introduction
 
-With higher rates of homelessness every year, and no clear end in sight, the U.S. is facing a homelessness epidemic of mass proportion. One could point at a number of causes such as stagnant wages, the COVID-19 pandemic, and mass wealth inequality. However, while the issue of homelessness is complex and multifaceted, I suspect that there is driver that stands above the rest in increasing rates of homelessness: a state's Cost of Living Index (COLI). Using data derived from a 2023 study on homelessness, I plan to analyze the extent to which cost of living affects state rates of homelessness. I wish to answer the question: Do homelessness rates across U.S. states increase with their cost of living index? I hypothesize that if a state has a greater COLI, it will have a higher rate of homelessness per 10,000 people. In other words, in states with a higher cost of living, I suspect that the overall rate of homelessness will be greater. This topic is particularly important and interesting because it affects real people. With higher cost-of-living indexes, basic necessities like food, housing, and utilities require a greater share of a person's finances. With this, it is only reasonable to assume that this would put more particular strain on low-income and vulnerable individuals, making it easier to fall into and harder to escape the homelessness cycle. By identifying a main cause or driver of homelessness rates, policy makers can then become more informed and redirect resources on the development and continuance of initiatives that tackle the primary driver.
+With higher rates of homelessness every year, and no clear end in sight, the U.S. is facing a homelessness epidemic of mass proportion. One could point at a number of causes such as stagnant wages, the COVID-19 pandemic, and mass wealth inequality. However, while the issue of homelessness is complex and multifaceted, I suspect that there is a main correlation with increasing rates of homelessness: a state's Cost of Living Index (COLI). Using data derived from a 2023 study on homelessness, I plan to analyze the extent to which cost of living correlates with state rates of homelessness. I wish to answer the question: Do homelessness rates across U.S. states increase with their cost of living index? I hypothesize that if a state has a greater COLI, it will have a higher rate of homelessness per 10,000 people. In other words, in states with a higher cost of living, I suspect that the overall rate of homelessness will be greater, indicating a positive relationship between the two variables. This topic is particularly important and interesting because it affects real people. With higher cost of living indexes, basic necessities like food, housing, and utilities require a greater share of a person's finances. With this, it is only reasonable to assume that this would put more particular strain on low-income and vulnerable individuals, making it easier to fall into and harder to escape the homelessness cycle. By identifying a correlating relationship between homelessness rates and Cost of Living Index, policy makers can then make more informed choices and redirect resources on the development and continuance of initiatives that seek to lower these two variables.
 
 ## Data
 
-My data set is borrowed from Thomas F. Heston's study titled "The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis." 
+My data set is borrowed from Thomas F. Heston's study titled "The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis." (Heston 2023)
 
 Heston TF. The Cost of Living Index as a Primary Driver of Homelessness in the United States: A Cross-State Analysis. Cureus. 2023;15(10):e46975. Published 2023 Oct 13. doi:10.7759/cureus.46975
 
@@ -178,7 +178,7 @@ homeless <- homeless |>
 homeless_top25 <- homeless |>
   slice_max(HOMELESSNESS, n = 25)
 ```
-
+The graph below is a summary of my main outcome variable, for your viewing pleasure.
 ```{r, echo = F}
 top25 <- ggplot(homeless_top25, 
                 aes(x = HOMELESSNESS,
@@ -201,7 +201,7 @@ top25
 ## Results
 
 ```{r, echo = F}
-homeless_lm_graph <- homeless2 |>
+homeless_lm_graph <- homeless |>
 ggplot(aes(x = COLI, 
            y = HOMELESSNESS)) +
   geom_point()+
@@ -213,15 +213,30 @@ ggplot(aes(x = COLI,
 homeless_lm_graph
 ```
 
-```{r}
-lm_homeless <- lm(HOMELESSNESS ~ COLI, data = homeless2)
-tidy(lm_homeless) |>
-  knitr::kable(digits = 3)
+This is a visualization that plots the amount of homeless per 10k in each of the states with its cost-of-living index (homeless per 10k in y axis [my dependent variable] and percent COLI in the x axis [my independent variable]) into a series of points. It then attempts to fit a linear regression line through these points. This is used to measure my main coefficient of interest, which is whether increased cost of living within states correlates with higher rates of homelessness. In the graph, it shows an increase (or upward trend/slope) in amount of homeless per 10k as the percent cost of living index goes up. This suggests that my hypothesis may be right, as it shows a positive relationship rather than a negative or absent relationship. This is corroborated in the table below. The first value presented is the predicted amount of homeless per 10k when COLI is at 0. The more interesting value is the 0.505 under COLI, which is the predicted increase in homeless per 10k in a state for every percentage point increase in COLI. Since this is a positive value, it is showing a positive relationship between increase in COLI and amount of homeless, which is corroborated above in the graph. Additionally, since a value of 1 in amount of homeless in 10k is representative of 10k people, 0.5 is representative of an increase in 5000 people homeless which is a substantially large amount. Taking this into account, along with the p value being close to zero, it indicates that there is a statistically significant relationship between cost of living within a state and its homelessness population. It is worth noting that this analysis and visualization cannot and should not be interpreted as causal. This is because we cannot have a randomized controlled study, as to do so would be extremely difficult and unethical. This visualization and analyis also does not take into account possible confounder variables such as leading party in a state, which could affect COLI. For example, democratic states could be ones that are more expensive to live in (i.e. more taxes, etc) and they could possibly have more homeless friendly policies which may increase the amount of homeless living there (homeless may move there or not want to leave there as much as red states) and vice versa. See the paragraph below this table for my analysis of this.
+
+```{r, echo = F}
+lm_homeless <- lm(HOMELESSNESS ~ COLI, data = homeless)
+lm_homeless_tab <- tidy(lm_homeless) |>
+  knitr::kable(col.names = c("Variable", "Change", "SD Error", "Stat", "P Val"), digits = 3)
+lm_homeless_tab
 ```
 
-```{r}
-lm(HOMELESSNESS ~ COLI + PARTY, data = homeless2)
+The table below represents a multiple regression using both cost of living and party in a state. Basically, we are analyzing how different factors like cost of living or party affiliation affect homelessness rates in states. The first value is homelessness when COLI and party is held at zero. This is impossible since you cannot have a COLI that is zero. The second, and what we are actually measuring, is COLI when party is held at a constant--when it is added as a factor. This means were comparing the cost of living index between states that are democrat or republican. We are doing this to measure if it is a confounder variable. In our original regression the change was 0.505 and when taking into account party it changes to 0.484. This is not a large change in amount of homeless per one percentage point increase of cost of living. Additionally, since we have such a large p value (0.605) for party, which way higher than the standard measure of 0.05, it shows that party is not a statistically significant variable. Both of these indicate that party is not a major confounder within our dataset. However,there are still possibilities of other major confounders such as a state's population. For example, one could assume that states with higher populations may have more competetion for limited housing and resources driving up both the cost of living index and homelessness rate.
+
+
+```{r, echo = F}
+lmmult <- lm(HOMELESSNESS ~ COLI + PARTY, data = homeless)
+lmmult_tab <- tidy(lmmult) |>
+  knitr::kable(col.names = c("Variable", "Change", "SD Error", "Stat", "P Val"), digits = 3)
+lmmult_tab
 ```
+
+
+
+
+
+## Conclusion
 
 
 
